@@ -3,14 +3,23 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-	<bean id="" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+	<bean id="simpleUrlHandlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<!-- 클라이언트에서 요청이 들어올때 전부 사용 -->
-		<property name="alwaysUseFullPath" value="ture" />
+		<property name="alwaysUseFullPath" value="true" />
 		<property name="mappings">
 			<props>
 				<prop key="/test">testController</prop>
 			</props>
 		</property>
+	</bean>
+	
+	<!-- 뷰 매핑 
+		DispatcherServlet  대신 뷰를 분석할 객체인 ViewResolver 중 InternalResourceViewResolver가 있는데,
+		이 객체는 동생 컨트롤러가 반환한 키 값을 가지고, 접두어와 접미어를 붙어 최종 full jsp 주소를 조합
+	-->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/"/>
+		<property name="suffix" value=".jsp"/>
 	</bean>
 	
 	<bean id="testController" class="com.academy.springmvcbasic.controller.TestController"/>
