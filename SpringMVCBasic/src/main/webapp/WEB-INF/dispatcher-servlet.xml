@@ -2,7 +2,16 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
-
 	
+	<bean id="" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<!-- 클라이언트에서 요청이 들어올때 전부 사용 -->
+		<property name="alwaysUseFullPath" value="ture" />
+		<property name="mappings">
+			<props>
+				<prop key="/test">testController</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="testController" class="com.academy.springmvcbasic.controller.TestController"/>
 </beans>
